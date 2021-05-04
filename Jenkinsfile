@@ -11,8 +11,8 @@ pipeline{
         
         stage('BUILD DOCKER IMAGE') {
           steps {
-                sh 'cd /var/lib/jenkins/workspace/multibranch-pipeline/'
-                sh 'cp /var/lib/jenkins/workspace/multibranch-pipeline/* /var/lib/jenkins/workspace/multibranch-pipeline'
+                sh 'cd /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline'
+                sh 'cp /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline/* /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline'
                 sh 'docker build -t rakesh2404/multi-pipelinetest:${BUILD_NUMBER} .'
             }
         }
@@ -31,7 +31,7 @@ pipeline{
         stage('CHECK WEBAPP RECHABILITY') {
             steps {
                 sh 'sleep 10s'
-                sh 'curl http://3.84.95.201:8000'
+                sh 'curl http://3.88.60.108:8000'
             }
         }
     }
