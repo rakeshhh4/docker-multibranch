@@ -5,14 +5,14 @@ pipeline{
         stage('CLONE REPO') {
           steps {
               sh 'rm -rf /var/lib/jenkins/workspace/multibranchpipeline-1/multibranch-pipeline'
-              sh 'git clone https://github.com/rakeshhh4/docker-multibranch.git multibranch-pipeline'
+              sh 'git clone https://github.com/rakeshhh4/docker-multibranch.git '
           }
         }
         
         stage('BUILD DOCKER IMAGE') {
           steps {
-                sh 'cd /var/lib/jenkins/workspace/multibranchpipeline-1/multibranch-pipeline'
-                sh 'cp /var/lib/jenkins/workspace/multibranchpipeline-1/multibranch-pipeline/* /var/lib/jenkins/workspace/multibranchpipeline-1/'
+                sh 'cd /var/lib/jenkins/workspace/multibranchpipeline-1/docker-multibranch'
+                sh 'cp /var/lib/jenkins/workspace/multibranchpipeline-1/docker-multibranch/* /var/lib/jenkins/workspace/multibranchpipeline-1/'
                 sh 'docker build -t rakesh2404/multi-pipelinetest:${BUILD_NUMBER} .'
             }
         }
