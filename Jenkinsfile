@@ -13,25 +13,25 @@ pipeline{
           steps {
                 sh 'cd /var/lib/jenkins/workspace/eline_multibranchpipeline-1_main/docker-multibranch'
                 sh 'cp /var/lib/jenkins/workspace/eline_multibranchpipeline-1_main/docker-multibranch/* /var/lib/jenkins/workspace/eline_multibranchpipeline-1_main/'
-                sh 'docker build -t rakesh2404/multi-pipelinetest:${BUILD_NUMBER} .'
+                sh 'docker build -t rakesh2404/multi-pipelinetestprod:${BUILD_NUMBER} .'
             }
         }
         stage('PUSH IMAGE TO DOCKER-HUB') {
             steps {
-                sh 'docker push rakesh2404/multi-pipelinetest:${BUILD_NUMBER}'
+                sh 'docker push rakesh2404/multi-pipelinetestprod:${BUILD_NUMBER}'
             }
         }
         stage('DEPLOY TO DOCKER HOST') {
             steps {
-                sh 'docker -H tcp://172.31.81.249:2375 stop MYAPPMASTER '
-                sh 'docker -H tcp://172.31.81.249:2375 run --rm -itd --name MYAPPMASTER --hostname MYAPPMASTER -p 8000:80 rakesh2404/multi-pipelinetest:${BUILD_NUMBER}'
+                sh 'docker -H tcp://172.31.81.249:2375 stop MYAPPMASTERPROD '
+                sh 'docker -H tcp://172.31.81.249:2375 run --rm -itd --name MYAPPMASTERPROD --hostname MYAPPMASTERPROD -p 8000:80 rakesh2404/multi-pipelinetestprod:${BUILD_NUMBER}'
             }
                 
         }
         stage('CHECK WEBAPP RECHABILITY') {
             steps {
                 sh 'sleep 10s'
-                sh 'curl http://3.88.60.108:8000'
+                sh 'curl http://3.88.60.108:10000'
             }
         }
     }
