@@ -2,12 +2,12 @@ pipeline{
     agent any
   
     stages{
-        stage('CLONE REPO') {
+        /* stage('CLONE REPO') {
           steps {
               sh 'rm -rf /var/lib/jenkins/workspace/eline_multibranchpipeline-1_prod/docker-multibranch'
               sh 'git clone https://github.com/rakeshhh4/docker-multibranch.git '
           }
-        }
+        } */
         
         stage('BUILD DOCKER IMAGE') {
           steps {
