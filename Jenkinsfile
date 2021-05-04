@@ -5,7 +5,7 @@ pipeline{
         stage('CLONE REPO') {
           steps {
               sh 'rm -rf multibranch-pipeline'
-              sh 'git clone https://github.com/rakeshhh4/dockertest1.git multibranch-pipeline'
+              sh 'git clone https://github.com/rakeshhh4/docker-multibranch.git multibranch-pipeline'
           }
         }
         
