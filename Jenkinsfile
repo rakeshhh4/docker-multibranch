@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('CLONE REPO') {
           steps {
-              sh 'rm -rf /var/lib/jenkins/workspace/multibranchpipeline-1/multibranch-pipeline'
+              sh 'rm -rf /var/lib/jenkins/workspace/multibranchpipeline-1/docker-multibranch'
               sh 'git clone https://github.com/rakeshhh4/docker-multibranch.git '
           }
         }
