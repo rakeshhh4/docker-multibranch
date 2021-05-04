@@ -12,7 +12,7 @@ pipeline{
         stage('BUILD DOCKER IMAGE') {
           steps {
                 sh 'cd /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline'
-                sh 'cp /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline/* /var/lib/jenkins/workspace/docker-multibranch_main/multibranch-pipeline'
+               
                 sh 'docker build -t rakesh2404/multi-pipelinetest:${BUILD_NUMBER} .'
             }
         }
