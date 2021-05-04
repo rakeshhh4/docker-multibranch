@@ -23,7 +23,7 @@ pipeline{
         }
         stage('DEPLOY TO DOCKER HOST') {
             steps {
-                //sh 'docker -H tcp://172.31.81.249:2375 stop MYAPPMASTER '
+                sh 'docker -H tcp://172.31.81.249:2375 stop MYAPPMASTER '
                 sh 'docker -H tcp://172.31.81.249:2375 run --rm -itd --name MYAPPMASTER --hostname MYAPPMASTER -p 8000:80 rakesh2404/multi-pipelinetest:${BUILD_NUMBER}'
             }
                 
